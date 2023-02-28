@@ -8,7 +8,7 @@ public class showDetails implements Show{
         for (Map.Entry<String, List<Task>> project : tasks.entrySet()) {
             System.out.println(project.getKey());
             for (Task task : project.getValue()) {
-                System.out.printf("    [%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription());
+                System.out.printf("    [%c] %d: %s%n", (task.isDone() ? 'x' : ' '), task.getId(), task.getDescription() , task.getDeadline());
             }
             System.out.println();
         }

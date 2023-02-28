@@ -15,7 +15,7 @@ public class AddTaskDetails  implements AddTask{
             System.out.println();
             return;
         }
-        projectTasks.add(new Task(nextId(), description, false));    }
+        projectTasks.add(new Task(nextId(), description, false ));    }
 
     @Override
     public long nextId() {

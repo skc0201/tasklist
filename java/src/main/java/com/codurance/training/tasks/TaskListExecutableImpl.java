@@ -14,6 +14,9 @@ public class TaskListExecutableImpl implements  TaskListExecutable{
         TaskListHelper taskListHelper = new TaskListHelperImpl();
         TaskListError taskListError = new TaskListErrorImpl();
         TaskListChecker taskListChecker = new TaskListCheckerImpl();
+        TaskDelete taskDelete = new TaskDeleteImpl();
+        TaskDeadline taskDeadline = new TaskDeadlineImpl();
+        ViewTask viewTask = new ViewTaskImpl();
         switch (command) {
             case "show":
                 sd.show(tasks);
@@ -39,6 +42,23 @@ public class TaskListExecutableImpl implements  TaskListExecutable{
             case "help":
                 taskListHelper.help();
                 break;
+            case "delete":
+                taskDelete.deleteTask(commandRest[1] , tasks);
+                break;
+            case "deadline":
+                taskDeadline.addDeadline(commandRest[1] , tasks);
+                break;
+            case "today":
+                viewTask.viewByToday(tasks);
+            case "view":
+                if(commandRest[1].equalsIgnoreCase("by date")){
+       viewTask.viewByDate(tasks);
+                }
+                else if(commandRest[1].equalsIgnoreCase("by deadline")){
+       viewTask.viewByDeadline(tasks);
+                } else if (commandRest[1].equalsIgnoreCase("by project")) {
+        viewTask.viewByProject(tasks);
+                }
             default:
                 taskListError.error(command);
                 break;
